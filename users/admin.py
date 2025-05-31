@@ -5,9 +5,11 @@ from .models import User
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     model = User
-    list_display = ('id', 'email', 'username', 'phone', 'city', 'is_staff', 'is_active')
-    search_fields = ('email', 'username', 'phone', 'city')
+    list_display = ('id', 'email', 'phone', 'city', 'is_staff', 'is_active')  # убрали username
+    search_fields = ('email', 'phone', 'city')  # убрали username
     list_filter = ('is_staff', 'is_active', 'city')
+    ordering = ('email',)  # добавили ordering, чтобы не было ошибок
+
     fieldsets = BaseUserAdmin.fieldsets + (
         (None, {'fields': ('phone', 'city', 'avatar')}),
     )

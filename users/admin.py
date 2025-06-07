@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User
+from .models import User, Payment
+
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
@@ -16,3 +17,10 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = BaseUserAdmin.add_fieldsets + (
         (None, {'fields': ('phone', 'city', 'avatar')}),
     )
+
+
+@admin.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'payment_date', 'paid_course', 'paid_lesson', 'amount', 'payment_method')
+    list_filter = ('payment_method',)
+    search_fields = ('user__username', 'paid_course__title', 'paid_lesson__title')

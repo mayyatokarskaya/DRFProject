@@ -20,11 +20,22 @@ class CourseViewSet(viewsets.ModelViewSet):
         return [IsAdminUser()]
 
 
-class LessonListCreateAPIView(generics.ListCreateAPIView):
+class LessonCreateAPIView(generics.CreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    permission_classes = [IsAdminUser]  # Только админ
 
-
-class LessonRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class LessonRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]  # Модератор или админ
+
+class LessonListAPIView(generics.ListAPIView):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
+
+class LessonDestroyAPIView(generics.DestroyAPIView):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+    permission_classes = [IsAdminUser]  # Только админ

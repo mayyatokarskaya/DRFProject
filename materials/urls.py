@@ -5,7 +5,7 @@ from .views import (
     LessonCreateAPIView,
     LessonRetrieveUpdateAPIView,
     LessonListAPIView,
-    LessonDestroyAPIView,
+    LessonDestroyAPIView, SubscriptionToggleAPIView,
 )
 
 router = DefaultRouter()
@@ -17,4 +17,5 @@ urlpatterns = [
     path("lessons/<int:pk>/", LessonRetrieveUpdateAPIView.as_view(), name="lesson-detail"),
     path("lessons/<int:pk>/delete/", LessonDestroyAPIView.as_view(), name="lesson-delete"),
     path("lessons/create/", LessonCreateAPIView.as_view()),
+    path('subscribe/', SubscriptionToggleAPIView.as_view(), name='toggle-subscription'),
 ] + router.urls

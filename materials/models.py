@@ -16,10 +16,7 @@ class Course(models.Model):
         verbose_name_plural = "Курсы"
 
     owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        verbose_name="Владелец",
-        related_name="courses"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", related_name="courses"
     )
 
 
@@ -38,8 +35,5 @@ class Lesson(models.Model):
         verbose_name_plural = "Уроки"
 
     owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        verbose_name="Владелец",
-        related_name="lessons"
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", related_name="lessons"
     )

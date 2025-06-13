@@ -8,11 +8,13 @@ from users.permissions import IsModerator
 from .models import Course, Lesson, Subscription
 from .permissions import IsOwner, IsOwnerOrModerator
 from .serializers import CourseSerializer, LessonSerializer
+from .paginators import StandardResultsSetPagination
 
 
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    pagination_class = StandardResultsSetPagination
 
     def get_permissions(self):
         if self.action in ["create", "destroy"]:
@@ -44,6 +46,7 @@ class LessonListAPIView(generics.ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
+    pagination_class = StandardResultsSetPagination
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):

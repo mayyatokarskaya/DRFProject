@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "materials",
     "django_filters",
     "drf_yasg",
+    'payments',
 ]
 
 

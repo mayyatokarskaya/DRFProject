@@ -840,6 +840,19 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "rerequests"
+version = "1.0.0b0"
+description = "Wrapper around requests library with automatic retry ability"
+optional = false
+python-versions = "*"
+files = [
+    {file = "rerequests-1.0.0b0.tar.gz", hash = "sha256:a86b6784d1f50303c12dd874b3e84c036ea4a120441615ebe1f0ee5fce31fe8a"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
 name = "sqlparse"
 version = "0.5.3"
 description = "A non-validating SQL parser."
@@ -896,4 +909,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "1e9bfdfc2f0f5bd70ef3f72f0402fd2f44d3403b96e1cd64f3c22212201ec7d2"
+content-hash = "4bfb34f6a6904bcff6d947b452381a9d889aef28cbabe48e260000f953ef2cf7"

@@ -36,7 +36,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class LessonRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+class LessonRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, IsOwnerOrModerator]
@@ -47,12 +47,6 @@ class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
     permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
     pagination_class = StandardResultsSetPagination
-
-
-class LessonDestroyAPIView(generics.DestroyAPIView):
-    queryset = Lesson.objects.all()
-    serializer_class = LessonSerializer
-    permission_classes = [IsAuthenticated, IsOwnerOrModerator]
 
 
 class SubscriptionToggleAPIView(APIView):

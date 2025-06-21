@@ -7,7 +7,6 @@ class Course(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
     preview = models.ImageField(upload_to="courses/", blank=True, null=True, verbose_name="Превью")
     description = models.TextField(verbose_name="Описание")
-    owner = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
     price = models.PositiveIntegerField(default=0)
 
     def __str__(self):

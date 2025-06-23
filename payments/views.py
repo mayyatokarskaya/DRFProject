@@ -24,8 +24,9 @@ class CreateCheckoutSessionView(APIView):
         Payment.objects.create(
             user=request.user,
             course=course,
-            stripe_session_id=session["session_id"],
-            stripe_payment_url=session["payment_url"]
+            stripe_session_id=session.id,
+            stripe_payment_url=session.url
         )
 
-        return Response({"checkout_url": session["payment_url"]})
+        return Response({"checkout_url": session.url})
+

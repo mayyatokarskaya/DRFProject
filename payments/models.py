@@ -12,7 +12,7 @@ class Payment(models.Model):
         related_name="stripe_payments"  # 👈 Уникальное имя для связи
     )
     stripe_session_id = models.CharField(max_length=255)
-    stripe_payment_url = models.URLField()
+    stripe_payment_url = models.URLField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

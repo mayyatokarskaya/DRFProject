@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "django_filters",
     "drf_yasg",
     'payments',
+    'django_celery_beat',
 ]
 
 

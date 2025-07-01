@@ -19,6 +19,7 @@ drf-yasg = "^1.21.10"
 rerequests = "^1.0.0b0"
 requests = "^2.32.4"
 stripe = "^12.2.0"
+celery = "^5.5.3"
 
 
 [tool.poetry.group.lint.dependencies]

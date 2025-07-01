@@ -20,6 +20,7 @@ rerequests = "^1.0.0b0"
 requests = "^2.32.4"
 stripe = "^12.2.0"
 celery = "^5.5.3"
+redis = "^6.2.0"
 
 
 [tool.poetry.group.lint.dependencies]

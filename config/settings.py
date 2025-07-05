@@ -145,3 +145,6 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 # celery-beat
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # для теста в консоли
+DEFAULT_FROM_EMAIL = 'mayya.tokarskaya@gmail.com'

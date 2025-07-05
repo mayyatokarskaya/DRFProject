@@ -1,6 +1,8 @@
 import os
 from datetime import timedelta
 from pathlib import Path
+
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -142,9 +144,18 @@ CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Moscow'
 
 # celery-beat
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # для теста в консоли
 DEFAULT_FROM_EMAIL = 'mayya.tokarskaya@gmail.com'
+
+CELERY_BEAT_SCHEDULE = {
+    'check_inactive_users_monthly': {
+        'task': 'materials.tasks.check_inactive_users',  # Путь к задаче
+        'schedule': crontab(day_of_month='1', hour='0', minute='0'),
+    },
+}
+

@@ -7,8 +7,46 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+django = "^5.2.1"
+djangorestframework = "^3.16.0"
+python-dotenv = "^1.1.0"
+psycopg2 = "^2.9.10"
+pillow = "^11.2.1"
+django-filter = "^25.1"
+coverage = "^7.9.1"
+coreapi = "^2.3.3"
+drf-yasg = "^1.21.10"
+rerequests = "^1.0.0b0"
+requests = "^2.32.4"
+stripe = "^12.2.0"
+celery = "^5.5.3"
+redis = "^6.2.0"
+django-celery-beat = "^2.8.1"
 
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^7.2.0"
+black = "^25.1.0"
+isort = "^6.0.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | dist
+  )/
+  | foo.py
+
+)
+'''
